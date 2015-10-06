@@ -1,6 +1,7 @@
 package com.mateoj.popularmoviesdemo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -106,9 +107,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public MovieViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
             View view = mInflater.inflate(R.layout.row_movie, parent, false);
-            MovieViewHolder viewHolder = new MovieViewHolder(view);
+            final MovieViewHolder viewHolder = new MovieViewHolder(view);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = viewHolder.getAdapterPosition();
+                    Intent intent = new Intent(mContext, MovieDetailActivity.class);
+                    intent.putExtra(MovieDetailActivity.EXTRA_MOVIE, mMovieList.get(position));
+                    mContext.startActivity(intent);
+                }
+            });
             return viewHolder;
         }
 
