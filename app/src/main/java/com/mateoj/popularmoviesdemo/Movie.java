@@ -1,10 +1,15 @@
 package com.mateoj.popularmoviesdemo;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 /**
  * Created by jose on 10/6/15.
  */
 public class Movie {
     private String title;
+    @SerializedName("poster_path")
     private String poster;
     private String description;
     private String backdrop;
@@ -18,7 +23,7 @@ public class Movie {
     }
 
     public String getPoster() {
-        return "http://t2.gstatic.com/images?q=tbn:ANd9GcQW3LbpT94mtUG1PZIIzJNxmFX399wr_NcvoppJ82k7z99Hx6in";
+        return "http://image.tmdb.org/t/p/w500" + poster;
     }
 
     public void setPoster(String poster) {
@@ -39,5 +44,13 @@ public class Movie {
 
     public void setBackdrop(String backdrop) {
         this.backdrop = backdrop;
+    }
+
+    public static class MovieResult {
+        private List<Movie> results;
+
+        public List<Movie> getResults() {
+            return results;
+        }
     }
 }
