@@ -18,6 +18,8 @@ public class Movie implements Parcelable{
     private String description;
     @SerializedName("backdrop_path")
     private String backdrop;
+    @SerializedName("vote_average")
+    private Double voteAverage;
 
     public Movie() {}
 
@@ -26,6 +28,7 @@ public class Movie implements Parcelable{
         poster = in.readString();
         description = in.readString();
         backdrop = in.readString();
+        voteAverage = in.readDouble();
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
@@ -72,6 +75,10 @@ public class Movie implements Parcelable{
         this.backdrop = backdrop;
     }
 
+    public double getVoteAverage() { return voteAverage; }
+
+    public void setVoteAverage(double voteAverage) { this.voteAverage = voteAverage; }
+
     @Override
     public int describeContents() {
         return 0;
@@ -83,6 +90,7 @@ public class Movie implements Parcelable{
         parcel.writeString(poster);
         parcel.writeString(description);
         parcel.writeString(backdrop);
+        parcel.writeDouble(voteAverage);
     }
 
     public static class MovieResult {

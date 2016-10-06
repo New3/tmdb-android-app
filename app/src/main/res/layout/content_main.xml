@@ -9,8 +9,15 @@
     tools:showIn="@layout/activity_main"
     tools:context=".MainActivity">
 
+    <TextView
+        android:text="THIS IS A SAMPLE APP BY GERARD NG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewSample" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/textViewSample"/>
 </RelativeLayout>
